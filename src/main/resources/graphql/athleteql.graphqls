@@ -1,0 +1,25 @@
+type Club {
+    id: ID!,
+    name: String!,
+    athletes: [Athlete]
+}
+type Activity {
+    id: ID!,
+    name: String!,
+    athletes: [Athlete]
+}
+type Athlete {
+    id: ID!,
+    lastName: String!,
+    firstName: String!,
+    activities: [Activity],
+    clubs: [Club]
+}
+type Query {
+    athletes(count: Int):[Athlete]
+    athlete(id: ID):Athlete
+    clubs: [Club]
+}
+type Mutation {
+    createAthlete(lastName: String!, firstName: String!):Athlete
+}
