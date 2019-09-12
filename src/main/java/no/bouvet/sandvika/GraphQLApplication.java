@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika;
+package no.bouvet.sandvika;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import lombok.extern.slf4j.Slf4j;
-import no.mil.bouvet.sandvika.domain.Activity;
-import no.mil.bouvet.sandvika.domain.Athlete;
-import no.mil.bouvet.sandvika.domain.Club;
-import no.mil.bouvet.sandvika.repository.AthleteRepository;
+import no.bouvet.sandvika.domain.Activity;
+import no.bouvet.sandvika.domain.Athlete;
+import no.bouvet.sandvika.domain.Club;
+import no.bouvet.sandvika.repository.AthleteRepository;
 
 @Slf4j
 @SpringBootApplication

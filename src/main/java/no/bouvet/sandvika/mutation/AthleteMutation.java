@@ -1,12 +1,12 @@
-package no.mil.bouvet.sandvika.mutation;
+package no.bouvet.sandvika.mutation;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import no.mil.bouvet.sandvika.domain.Athlete;
-import no.mil.bouvet.sandvika.service.AthleteService;
+import no.bouvet.sandvika.domain.Athlete;
+import no.bouvet.sandvika.service.AthleteService;
 
 @Component
 public class AthleteMutation implements GraphQLMutationResolver

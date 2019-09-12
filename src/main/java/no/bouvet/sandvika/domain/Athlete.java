@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika.domain;
+package no.bouvet.sandvika.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

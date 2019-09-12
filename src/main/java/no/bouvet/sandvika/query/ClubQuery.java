@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika.query;
+package no.bouvet.sandvika.query;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import no.mil.bouvet.sandvika.domain.Club;
-import no.mil.bouvet.sandvika.service.ClubService;
+import no.bouvet.sandvika.domain.Club;
+import no.bouvet.sandvika.service.ClubService;
 
 @Component
 public class ClubQuery implements GraphQLQueryResolver

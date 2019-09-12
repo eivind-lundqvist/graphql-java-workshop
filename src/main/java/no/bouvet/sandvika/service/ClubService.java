@@ -1,12 +1,12 @@
-package no.mil.bouvet.sandvika.service;
+package no.bouvet.sandvika.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import no.mil.bouvet.sandvika.domain.Club;
-import no.mil.bouvet.sandvika.repository.ClubRepository;
+import no.bouvet.sandvika.domain.Club;
+import no.bouvet.sandvika.repository.ClubRepository;
 
 @Service
 public class ClubService

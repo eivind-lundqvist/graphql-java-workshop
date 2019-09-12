@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika.resolver;
+package no.bouvet.sandvika.resolver;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import com.coxautodev.graphql.tools.GraphQLResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import no.mil.bouvet.sandvika.domain.Activity;
-import no.mil.bouvet.sandvika.domain.Athlete;
-import no.mil.bouvet.sandvika.domain.Club;
-import no.mil.bouvet.sandvika.repository.ActivityRepository;
-import no.mil.bouvet.sandvika.repository.ClubRepository;
+import no.bouvet.sandvika.domain.Activity;
+import no.bouvet.sandvika.domain.Athlete;
+import no.bouvet.sandvika.domain.Club;
+import no.bouvet.sandvika.repository.ActivityRepository;
+import no.bouvet.sandvika.repository.ClubRepository;
 
 @Component
 public class AthleteResolver implements GraphQLResolver<Athlete>

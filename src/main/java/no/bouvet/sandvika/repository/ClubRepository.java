@@ -1,6 +1,7 @@
-package no.mil.bouvet.sandvika.repository;
+package no.bouvet.sandvika.repository;
 
-import no.mil.bouvet.sandvika.domain.Club;
+import no.bouvet.sandvika.domain.Club;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

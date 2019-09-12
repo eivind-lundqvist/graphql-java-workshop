@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika.query;
+package no.bouvet.sandvika.query;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,8 +10,8 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import no.mil.bouvet.sandvika.domain.Athlete;
-import no.mil.bouvet.sandvika.service.AthleteService;
+import no.bouvet.sandvika.domain.Athlete;
+import no.bouvet.sandvika.service.AthleteService;
 
 @Component
 public class AthleteQuery implements GraphQLQueryResolver
@@ -24,12 +24,14 @@ public class AthleteQuery implements GraphQLQueryResolver
         this.athleteService = athleteService;
     }
 
-    public List<Athlete> getAthletes(final int count) {
+    public List<Athlete> getAthletes(final int count)
+    {
         return this.athleteService.getAllAthletes(count);
     }
 
     @Transactional
-    public Optional<Athlete> getAthlete(final Long id) {
+    public Optional<Athlete> getAthlete(final Long id)
+    {
         return this.athleteService.getAthlete(id);
     }
 }

@@ -1,4 +1,4 @@
-package no.mil.bouvet.sandvika.service;
+package no.bouvet.sandvika.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import no.mil.bouvet.sandvika.domain.Athlete;
-import no.mil.bouvet.sandvika.repository.AthleteRepository;
+import no.bouvet.sandvika.domain.Athlete;
+import no.bouvet.sandvika.repository.AthleteRepository;
 
 @Service
 public class AthleteService
