@@ -5,7 +5,7 @@ Denne Workshoppen setter fokus på hvordan graphql-spesifikasjonen passer inn i 
 GraphQL-Java implementerer spesifikasjonen GraphQL. 
 
 ## Kom i gang
-Start med å clone dette git repo. Oppgaver gjøres ligger rett på master branch.
+Start med å clone dette git repo. Oppgaver gjøres rett på master branch.
 
 ### Dependencies
 Følgende avhengigheter er sentrale for å få graphql-støtte i Spring Boot. GraphQL-Java leverer et sett med Spring Boot startere for å komme raskt i gang. 
@@ -29,8 +29,8 @@ Følgende avhengigheter er sentrale for å få graphql-støtte i Spring Boot. Gr
     </dependency>
 </dependencies>
 ```
-* Avhengigheten _graphql-spring-boot-starter_ drar inn alle de avhengighentene som er nødvendig for å serve graphql API'et fra app-serveren.
-* Avhengigheten _graphql-java-tools_ forenkler mye av utviklen da denne sørger for mappingen mellom graphql skjema og POJO-objektene.
+* Avhengigheten _graphql-spring-boot-starter_ drar inn alle de avhengighentene som er nødvendig for å serve graphql API'et fra webserveren.
+* Avhengigheten _graphql-java-tools_ forenkler mye av utviklen da denne sørger for mappingen mellom graphql skjema og POJO-objektene. BYOO
 * Avhengigheten _graphiql-spring-boot-starter_ sørger for at GraphiQL kjøres opp. GraphiQL er et konsoll for å teste API'et. Defualt kjøres det opp under http://localhost:8080/graphiql. (Tas med i en applikasjon for testing og bør ikke bli med ut i produksjon)
 
 ### Intellij IDEA plugin
@@ -249,7 +249,7 @@ Oppdater skjemafilen fra oppgave 1-2 med en ny mutation som skal opprette en ny 
 * metoden skal returnere det persisterte objektet Athlete.
 
 ## Oppgave 8 - Service for mutation
-Utvid Athlete service slik at en kan lagre Athlete.
+Utvid AthleteService slik at en kan lagre Athlete.
  
 ## Oppgave 9 - GraphQLMutationResolver
 
