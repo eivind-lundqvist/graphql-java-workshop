@@ -169,7 +169,7 @@ Kjør følgende spørring:
     }
 }
 ```
-Merk dokumantasjonen til høyere og den smoothe intelliSensen :smirk:
+Merk dokumantasjonen til høyre og den smoothe intelliSensen :smirk:
 
 ### Oppgave 6.1
 
