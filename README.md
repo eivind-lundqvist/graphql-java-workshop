@@ -30,7 +30,7 @@ Følgende avhengigheter er sentrale for å få graphql-støtte i Spring Boot. Gr
 </dependencies>
 ```
 * Avhengigheten _graphql-spring-boot-starter_ drar inn alle de avhengighentene som er nødvendig for å serve graphql API'et fra webserveren.
-* Avhengigheten _graphql-java-tools_ forenkler mye av utviklen da denne sørger for mappingen mellom graphql skjema og POJO-objektene. BYOO
+* Avhengigheten _graphql-java-tools_ forenkler mye av utviklen da denne sørger for mappingen mellom graphql skjema og POJO-objektene. Den parser det gitte GraphQL schema og tillater BYOO (bring your own object) slik at du kan fylle inn implementasjonen. 
 * Avhengigheten _graphiql-spring-boot-starter_ sørger for at GraphiQL kjøres opp. GraphiQL er et konsoll for å teste API'et. Defualt kjøres det opp under http://localhost:8080/graphiql. (Tas med i en applikasjon for testing og bør ikke bli med ut i produksjon)
 
 ### Intellij IDEA plugin
