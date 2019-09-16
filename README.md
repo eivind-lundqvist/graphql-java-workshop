@@ -96,6 +96,23 @@ public class ViewerQuery implements GraphQLQueryResolver
 
 ```java
 /**
+type Viewer {
+    name: String,
+    homes: [Home]! #<----- Denne må resolves
+}
+*/
+@Component
+public class ViewerResolver implements GraphQLResolver<Viewer>
+{
+    public List<Home> homes(Viewer viewer)
+    {
+        //Finn og returner Home som hører til Viewer
+    }
+}
+```
+
+```java
+/**
 type Mutation {
     createHome(appNickname: String):Home
 }
