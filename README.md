@@ -127,7 +127,6 @@ public class HomeMutation implements GraphQLMutationResolver
 ```
 
 ## Demo
-
 https://developer.tibber.com/explorer
 
 ## Kom i gang
@@ -165,8 +164,13 @@ Kan være en fordel å installere _JS GraphQL_ plugin i intellij.
 ## Domene
 ![Domenemodell](domenemodell.png)
 
+## Pakkestruktur
+![Pakkestruktur](pakkestruktur.png)
+
 ## Oppgave 1 - GraphQL schema - types
-GraphQL skjema må ligge i mappen resources/graphql med file extension ```.graphqls```. Det er allerede opprettet en fil i mappen graphql med navn ```athleteql.graphqls```. Utifra domenemodellen over, lag et passende graphql skjema for Athlete, Club og Activity.
+GraphQL skjema må ligge i mappen resources/graphql med file extension ```.graphqls```. Det er allerede opprettet en fil i mappen graphql med navn ```athleteql.graphqls```. 
+
+Utifra domenemodellen over, lag et passende graphql skjema for Athlete, Club og Activity.
 
 [Hvordan lage graphql skjema](https://graphql.org/learn/)
 
@@ -186,7 +190,7 @@ public List<Athlete> getAthletes(final int count)
 ```
 
 ## Oppgave 3 - Persistence
-Opprett entiteter ut fra domenemodellen i pakken no.bouvet.sandvika.domain. Tips: benytt Lombok for å generere getter/setter, hash code og equals.
+Opprett entiteter ut fra [domenemodellen](##Domene) i pakken no.bouvet.sandvika.domain. Tips: benytt Lombok for å generere getter/setter, hash code og equals.
 
 Applikasjonen skal benytte Spring Boot data JPA for å persistere data til H2 DB. Opprett repository interface for Spring Boot data under pakken no.bouvet.sandvika.repository.
 
@@ -280,7 +284,7 @@ public class AthleteQuery implements GraphQLQueryResolver
     }
 }
 ```
-En Query er root eller entry point i GraphQL. Alle metoder definert som en query eller mutation (inserts kommer senere) i graphql skjema må resolve til en metode i en klasse som implementerer _GraphQLQueryResolver_ eller _GraphQLMutationResolver_.
+En Query er root eller entry point i GraphQL. Alle metoder definert som en query eller mutation (inserts kommer senere) i graphql skjema må resolve til en metode i en klasse som implementerer ```GraphQLQueryResolver``` eller ```GraphQLMutationResolver```.
 
 ## Oppgave 6 - First run
 På tide å teste applikasjonen. Start opp og naviger til http://localhost:8080/graphiql.
@@ -314,7 +318,7 @@ Test å kjøre Queryen
 }
 ```
 
-Du skal nå få en Exception, som forteller deg at graphql-java ikke vet hvordan den skal hente activities på athletes. Dette låses ved å lage en Resolver. Lag Resolveren.
+Du skal nå få en Exception, som forteller deg at graphql-java ikke vet hvordan den skal hente activities på athletes. Dette løses ved å lage en Resolver. 
 
 ```Java
 package no.bouvet.sandvika.resolver;
@@ -378,7 +382,6 @@ Oppdater skjemafilen fra oppgave 1-2 med en ny mutation som skal opprette en ny 
 Utvid AthleteService slik at en kan lagre Athlete.
  
 ## Oppgave 9 - GraphQLMutationResolver
-
 ```Java
 package no.bouvet.sandvika.mutation;
 
@@ -407,44 +410,49 @@ public class AthleteMutation implements GraphQLMutationResolver
 }
 
 ```
-Test å kalle mutationen og sjekk at athletes returnerer den nye atleten.
+Test å kalle den nye mutationen-tjenesten og sjekk at athletes-tjenesten returnerer den nye atleten via GraphiQL-konsollet.
 
-## Nyttige info
+## Oppgave 10 - GraphQL skjema - ny query
+Opprett en ny spørring i ```athleteql.graphqls``` som matcher signaturen til metoden under.
 
-Endpoint:
-http://localhost:8080/graphql
-
-Test-client:
-http://localhost:8080/graphiql
-
-Browse database:
-http://localhost:8080/h2-console/
-
-## Queries
-
-```graphql
+```java
+public Optional<Athlete> getAthlete(final Long id)
 {
-    athletes(count: 10) {
-        id,
-        firstName,
-        lastName
-    }
+    return this.athleteService.getAthlete(id);
 }
 ```
+### Oppgave 10.1 - Legg til støtte i service
+Opprett en service-metode som støtter å hente ut en athlete ved id.
+
+### Oppgave 10.2 - QraphQL Java Tools - ny root query
+Legg til metoden under i ```AthleteQuery``` for å støtte graphql-skjema.
+
+```java
+public Optional<Athlete> getAthlete(final Long id)
+{
+    return this.athleteService.getAthlete(id);
+}
+```
+
+### Oppgave 10.3 - Test i graphiql
+Start opp og naviger til http://localhost:8080/graphiql. Test den nye utvidelsen.
+ 
+## Oppgave 11 - Åpen oppgave
+Gitt følgende spørring
 ```graphql
 query {
     clubs {
         id,
         name,
-        athletes{
+        athletes {
             id,
             firstName,
             lastName,
-            clubs{
+            clubs {
                 id,
                 name
             }
-            activities{
+            activities {
                 id,
                 name
             }
@@ -452,14 +460,15 @@ query {
     }
 }
 ```
+Utvid applikasjonen slik at den kjører GraphiQL.
 
-## Mutations
-```graphql
-mutation {
-    createAthlete(lastName: "Tyson", firstName: "Mike"){
-        id,
-        firstName,
-        lastName
-    }
-}
-```
+## Oppsummering
+GraphQL er ment som et bedre alternativ til REST, og kan kompletterer API’et ditt på mange områder der REST ikke gjør det;
+
+* Problemet med mange REST-API’er i dag er at de mangler en klar kontrakt. Det kan da være vanskelig å skjønne hvordan API’et skal benyttes samt hva som kan forventes i responsen. I GraphQL er skjemaet ryggraden i API’et, slik at du kan klart og tydelig få oversikten over operasjoner samt input output. Skjema-spesifikasjonen vil gå igjen på tvers av GraphQL API’ene, slik at en alltid vil kjenne seg igjen i begrepsapparatet. 
+* En del av de issuene vi har sett på vårt prosjekt er at vi ofte henter for mye data, samt at vi gjør flere kall til back-end en det som strengt tatt er nødvendig. Med GraphQL spesifiserer klienten alltid hva som ønskes tilbake i responsen, slik at over/under-fetching av data ikke er et problem lenger.
+* GraphQL er en game changer innenfor utvikling av applikasjoner som kjører på mobile enheter. Der kravet til lavt dataforbruk er høyt. “hent akkurat det du trenger, når du trenger det”.
+* GraphQL har støtte for å kombinere flere API-kall innenfor en operasjon, også på tvers av tjenester.
+* Open-source. Mange verktøy og rammeverk der ute.
+
+Så, alt-i-alt skal GraphQL gi bedre performance siden klienten optimaliserer uthenting av data fra backend tjenestene.
