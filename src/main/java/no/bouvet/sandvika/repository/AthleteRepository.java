@@ -20,5 +20,4 @@ public interface AthleteRepository extends JpaRepository<Athlete, Long>
 
     @Query("from Athlete")
     Stream<Athlete> streamAll();
-
 }

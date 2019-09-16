@@ -29,7 +29,7 @@ public class AthleteService
 
     @Transactional(readOnly = true)
     public List<Athlete> getAllAthletes(final int count) {
-        return this.athleteRepository.findAll().stream()
+        return this.athleteRepository.streamAll()
             .limit(count)
             .collect(Collectors.toList());
     }
