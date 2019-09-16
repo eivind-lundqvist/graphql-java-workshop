@@ -8,37 +8,39 @@ GraphQL-Java implementerer spesifikasjonen GraphQL.
 
 ### Schema
 ```graphql
-   {  
-     viewer{  
-       name  
-      homes {
-        appNickname
-      }
-     }  
-  }
+type Viewer {
+    name: String,
+    homes: [Home]!
+}
+type Home {
+    id: ID!,
+    appNickname: String
+}
+type Query {
+    viewer:Viewer!
+}
 ```
 
 ### Query
 ```graphql
-   {  
-     viewer{  
-       name  
-      homes {
-        appNickname
-      }
-     }  
-  }
+{  
+  viewer{  
+   name  
+   homes {
+     appNickname
+   }
+  }  
+}
 ```
 
 ### Resultat
 ```graphql
-  {
+{
   "data": {
     "viewer": {
       "name": "Arya Stark",
       "homes": [
         {
-          "id": "c70dcbe5-4485-4821-933d-a8a86452737b",
           "appNickname": "Testvägen 72"
         }
       ]
