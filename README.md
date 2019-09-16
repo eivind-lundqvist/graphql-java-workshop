@@ -4,6 +4,49 @@ Denne Workshoppen setter fokus på hvordan graphql-spesifikasjonen passer inn i 
 
 GraphQL-Java implementerer spesifikasjonen GraphQL. 
 
+## Graphql-java-tools
+
+### Schema
+```graphql
+   {  
+     viewer{  
+       name  
+      homes {
+        appNickname
+      }
+     }  
+  }
+```
+
+### Query
+```graphql
+   {  
+     viewer{  
+       name  
+      homes {
+        appNickname
+      }
+     }  
+  }
+```
+
+### Resultat
+```graphql
+  {
+  "data": {
+    "viewer": {
+      "name": "Arya Stark",
+      "homes": [
+        {
+          "id": "c70dcbe5-4485-4821-933d-a8a86452737b",
+          "appNickname": "Testvägen 72"
+        }
+      ]
+    }
+  }
+}
+```
+
 ## Demo
 
 https://developer.tibber.com/explorer
