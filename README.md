@@ -4,6 +4,10 @@ Denne Workshoppen setter fokus på hvordan graphql-spesifikasjonen passer inn i 
 
 GraphQL-Java implementerer spesifikasjonen GraphQL. 
 
+## Demo
+
+https://developer.tibber.com/explorer
+
 ## Kom i gang
 Start med å clone dette git repo. Oppgaver gjøres rett på master branch.
 
