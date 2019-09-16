@@ -4,7 +4,11 @@ Denne Workshoppen setter fokus på hvordan graphql-spesifikasjonen passer inn i 
 
 GraphQL-Java implementerer spesifikasjonen GraphQL. 
 
-## Graphql-java-tools
+## Hvordan 
+
+### Graphql-java-tools
+
+Graphql-java-tools sørger for mappingen mellom graphql skjema og POJO-objektene. Og har markør-interfaces for å implementere Queries, Mutations og Resolvers.
 
 ### Schema
 ```graphql
