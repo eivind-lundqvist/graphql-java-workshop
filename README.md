@@ -19,6 +19,9 @@ type Home {
 type Query {
     viewer:Viewer!
 }
+type Mutation {
+    createHome(appNickname: String):Home
+}
 ```
 
 ### Query
@@ -33,7 +36,7 @@ type Query {
 }
 ```
 
-### Resultat
+### Resultat av query
 ```graphql
 {
   "data": {
@@ -46,6 +49,59 @@ type Query {
       ]
     }
   }
+}
+```
+
+```java
+@Data @EqualsAndHashCode @Builder
+public class Viewer implements Serializable
+{
+    private static final long serialVersionUID = 1L;
+    
+    Sting name;
+    @ToString.Exclude @EqualsAndHashCode.Exclude private List<Home> homes;
+}
+```
+
+```java
+@Data @EqualsAndHashCode @Builder
+public class Home implements Serializable
+{
+    private static final long serialVersionUID = 1L;
+    
+    private Long id;
+    private String appNickname;
+}
+```
+
+```java
+/**
+type Query {
+    viewer:Viewer!
+}
+*/
+@Component
+public class ViewerQuery implements GraphQLQueryResolver
+{
+    @Transactional
+    public Optional<Viewer> viewer() {
+        //Finn og returner Viewer
+    }
+}
+```
+
+```java
+/**
+type Mutation {
+    createHome(appNickname: String):Home
+}
+*/
+@Component
+public class HomeMutation implements GraphQLMutationResolver
+{
+    public Home createHome(final String appNickname) {
+        //Opprett Home og returner
+    }
 }
 ```
 
